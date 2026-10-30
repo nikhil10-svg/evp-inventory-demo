@@ -100,17 +100,23 @@ const filled = v => v !== null && v !== undefined && v !== "";
 const show = v => filled(v) ? escapeHtml(String(v)) : '<span class="missing">missing</span>';
 function escapeHtml(s) { return s.replace(/[&<>"']/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c])); }
 
+// Fetch one JSON file and say exactly which file failed and why
+async function getJson(path) {
+  const r = await fetch(path, { cache: "no-store" });
+  if (!r.ok) throw new Error(`${path} was not found (HTTP ${r.status}). Check the file exists at that exact path in the repo`);
+  const text = await r.text();
+  try { return JSON.parse(text); }
+  catch { throw new Error(`${path} is not valid JSON. Open it in the repo and check for a missing comma, quote or bracket`); }
+}
+
 let customers = [];
 let openId = null;
 
 async function load() {
   try {
     // cache: "no-store" so a fresh commit shows up on reload
-    const manifest = await fetch("data/manifest.json", { cache: "no-store" }).then(r => r.json());
-    customers = await Promise.all(manifest.customers.map(p => fetch(p, { cache: "no-store" }).then(r => {
-      if (!r.ok) throw new Error(p + " returned " + r.status);
-      return r.json();
-    })));
+    const manifest = await getJson("data/manifest.json");
+    customers = await Promise.all(manifest.customers.map(getJson));
     customers.forEach(c => c._complete = Math.round(100 * MANDATORY.filter(f => filled(get(c, f))).length / MANDATORY.length));
     const regions = [...new Set(customers.map(c => c.general.initial_deployed_region))].sort();
     document.getElementById("region").insertAdjacentHTML("beforeend", regions.map(r => `<option>${escapeHtml(r)}</option>`).join(""));
@@ -119,7 +125,7 @@ async function load() {
     render();
   } catch (e) {
     document.querySelector(".table-wrap").outerHTML =
-      `<div class="err">Couldn't load the data: ${escapeHtml(e.message)}. If you opened this file directly from your computer, run it through GitHub Pages or a local server instead (see README).</div>`;
+      `<div class="err">Couldn't load the data: ${escapeHtml(e.message)}. If you opened this file directly from your computer, use GitHub Pages or a local server instead (see README).</div>`;
     document.getElementById("stamp").textContent = "Data not loaded";
   }
 }
