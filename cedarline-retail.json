@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "last_updated": "2026-10-20",
+  "dsrf": {
+    "dsrf_id": "DSRF-2026-00203",
+    "status": "In Progress",
+    "submitted_on": "2026-09-18",
+    "source": "Digital SRF list view (dummy)"
+  },
+  "general": {
+    "customer_name": "Cedarline Retail",
+    "ico1_id": "900303",
+    "initial_deployed_region": "APAC",
+    "install_offer_id": null
+  },
+  "infrastructure": {
+    "product": "VNFaaS",
+    "sub_product": "FW-FORTINET",
+    "blueprint": null,
+    "number_of_vms": 2,
+    "console_deployed": false
+  },
+  "pops": [
+    { "name": "SIN1", "region": "APAC", "role": "Primary", "internet_bw_mbps": 200, "mpls_bw_mbps": null, "vcpus": 8 }
+  ],
+  "contacts": {
+    "csm": "Priya Rao",
+    "customer_service_desk": "CSD Singapore",
+    "service_owner": "External Integrator",
+    "integrator": "Example Partner Ltd",
+    "configuration_team": null,
+    "customer_technical_contact": null
+  },
+  "status": "Pending",
+  "open_points": ["Blueprint not yet assigned", "Configuration team TBD", "Customer technical contact missing"]
+}

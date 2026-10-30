@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "last_updated": "2026-10-28",
+  "dsrf": {
+    "dsrf_id": "DSRF-2026-00142",
+    "status": "Completed",
+    "submitted_on": "2026-03-12",
+    "source": "Digital SRF list view (dummy)"
+  },
+  "general": {
+    "customer_name": "Aurora Logistics",
+    "ico1_id": "900101",
+    "initial_deployed_region": "EMEA",
+    "install_offer_id": "OFF-77812"
+  },
+  "infrastructure": {
+    "product": "VNFaaS",
+    "sub_product": "FW-PALOALTO",
+    "blueprint": "BP-FW-HA-02",
+    "number_of_vms": 6,
+    "console_deployed": true
+  },
+  "pops": [
+    { "name": "PAR3", "region": "EMEA", "role": "Primary", "internet_bw_mbps": 500, "mpls_bw_mbps": 200, "vcpus": 16 },
+    { "name": "FRA2", "region": "EMEA", "role": "Backup", "internet_bw_mbps": 500, "mpls_bw_mbps": 200, "vcpus": 16 }
+  ],
+  "contacts": {
+    "csm": "Jane Doe",
+    "customer_service_desk": "CSD Paris",
+    "service_owner": "DIY",
+    "integrator": null,
+    "configuration_team": "Customer",
+    "customer_technical_contact": "ops-team@aurora.example"
+  },
+  "status": "Active",
+  "open_points": []
+}

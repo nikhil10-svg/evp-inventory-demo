@@ -1,0 +1,7 @@
+{
+  "customers": [
+    "data/customers/aurora-logistics.json",
+    "data/customers/bluepeak-pharma.json",
+    "data/customers/cedarline-retail.json"
+  ]
+}

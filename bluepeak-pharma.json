@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "last_updated": "2026-10-25",
+  "dsrf": {
+    "dsrf_id": "DSRF-2026-00187",
+    "status": "Completed",
+    "submitted_on": "2026-05-04",
+    "source": "Digital SRF list view (dummy)"
+  },
+  "general": {
+    "customer_name": "Bluepeak Pharma",
+    "ico1_id": "900202",
+    "initial_deployed_region": "Americas",
+    "install_offer_id": "OFF-80345"
+  },
+  "infrastructure": {
+    "product": "VNFaaS",
+    "sub_product": "SDWAN-CISCO",
+    "blueprint": "BP-SDWAN-03",
+    "number_of_vms": 12,
+    "console_deployed": true
+  },
+  "pops": [
+    { "name": "ASH1", "region": "Americas", "role": "Primary", "internet_bw_mbps": 1000, "mpls_bw_mbps": 500, "vcpus": 32 },
+    { "name": "SJC2", "region": "Americas", "role": "Backup", "internet_bw_mbps": 1000, "mpls_bw_mbps": 500, "vcpus": 32 }
+  ],
+  "contacts": {
+    "csm": "John Smith",
+    "customer_service_desk": "CSD Americas",
+    "service_owner": "Internal Integrator",
+    "integrator": "OB Integration Services",
+    "configuration_team": "OB Config Team",
+    "customer_technical_contact": "netops@bluepeak.example"
+  },
+  "status": "Active",
+  "open_points": ["Confirm MPLS bandwidth for SJC2"]
+}
